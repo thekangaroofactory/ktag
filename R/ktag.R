@@ -13,10 +13,12 @@
 #' - what: the name of the action. Usually the id of the input, including its namespace
 #' - how: additional info to log, like the value of an input for example
 #'
-#' @returns
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' ktag(who = session$token, what = "namespace-action")
+#' }
 
 ktag <- function(..., path = Sys.getenv("DATA_HOME")){
 
