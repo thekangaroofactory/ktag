@@ -1,0 +1,14 @@
+Package: ktag
+Title: Shiny Analytics
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Philippe",
+           family = "Peret",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0003-9666-7490"),
+           email = "philippe.peret@hotmail.com")
+Description: Provides features to do basic shiny web analytics.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
