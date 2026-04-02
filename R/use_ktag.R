@@ -5,12 +5,14 @@
 #' @returns a script HTML tag
 #' @export
 #'
+#' @importFrom htmltools tags
+#'
 #' @examples
 #' use_ktag()
 
 use_ktag <- function(){
 
-  tags$script(
+  htmltools::tags$script(
 
     "// -- track click with class ktag
       $(document).on('click', '.ktag', function(event) {

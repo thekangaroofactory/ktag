@@ -4,9 +4,11 @@
 \alias{ktag_listener}
 \title{Observe Event on Tag}
 \usage{
-ktag_listener(session)
+ktag_listener(input, session)
 }
 \arguments{
+\item{input}{the input object}
+
 \item{session}{the session object from the server}
 }
 \value{
