@@ -1,5 +1,5 @@
 Package: ktag
-Title: Shiny Analytics
+Title: R Package for Shiny Analytics
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Philippe",
@@ -15,3 +15,4 @@ RoxygenNote: 7.3.3
 Imports:
     htmltools,
     shiny
+URL: https://thekangaroofactory.github.io/ktag/
