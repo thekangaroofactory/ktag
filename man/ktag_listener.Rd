@@ -12,7 +12,7 @@ ktag_listener(input, session)
 \item{session}{the session object from the server}
 }
 \value{
-an observer
+an observer reference class object (see shiny::observeEvent())
 }
 \description{
 Observe Event on Tag

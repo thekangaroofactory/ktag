@@ -5,7 +5,7 @@
 #' @param session the session object from the server
 #' @param input the input object
 #'
-#' @returns an observer
+#' @returns an observer reference class object (see shiny::observeEvent())
 #' @export
 #'
 #' @importFrom shiny observeEvent
