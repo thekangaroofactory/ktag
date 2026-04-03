@@ -4,7 +4,7 @@
 \alias{ktag}
 \title{Log User Actions}
 \usage{
-ktag(..., path = Sys.getenv("DATA_HOME"))
+ktag(..., path = Sys.getenv("KTAG_PATH"))
 }
 \arguments{
 \item{...}{parameters to log (see details)}
