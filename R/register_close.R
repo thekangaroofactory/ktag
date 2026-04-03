@@ -8,10 +8,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' session_close(session)
+#' register_close(session)
 #' }
 
-session_close <- function(session){
+register_close <- function(session){
 
   # -- log session end
   session$onSessionEnded(function(){
