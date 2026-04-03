@@ -24,11 +24,11 @@
 #' ktag(who = session$token, what = "namespace-action")
 #' }
 
-ktag <- function(..., path = Sys.getenv("DATA_HOME")){
+ktag <- function(..., path = Sys.getenv("KTAG_PATH")){
 
-  stopifnot("DATA_HOME environment variable is not set or path is NULL" = !is.null(path))
+  stopifnot("KTAG_PATH environment variable is not set or path is NULL" = !is.null(path))
 
-  if(Sys.getenv("KTAG") == "OFF")
+  if(Sys.getenv("KTAG_STATE") == "OFF")
     return()
 
   arg_list <- list(...)
