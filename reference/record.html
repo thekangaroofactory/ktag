@@ -43,18 +43,14 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">record</span><span class="op">(</span><span class="va">input</span>, <span class="va">session</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">record</span><span class="op">(</span>session <span class="op">=</span> <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/domains.html" class="external-link">getDefaultReactiveDomain</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-input">input<a class="anchor" aria-label="anchor" href="#arg-input"></a></dt>
-<dd><p>the input object of the Shiny server function</p></dd>
-
-
-<dt id="arg-session">session<a class="anchor" aria-label="anchor" href="#arg-session"></a></dt>
+<dl><dt id="arg-session">session<a class="anchor" aria-label="anchor" href="#arg-session"></a></dt>
 <dd><p>the session object of the Shiny server function</p></dd>
 
 </dl></div>
@@ -64,10 +60,8 @@
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><code>input</code> is required to create the listener that will capture events sent by
-the JavaScript code.
-<code>session</code> is required to register the onSessionEnded callback, get the URL
-query string &amp; use the token value as a session uuid.</p>
+    <p><code>session</code> is required to seteup the event listener, register the onSessionEnded callback,
+get the URLcquery string &amp; use the token value as a session uuid.</p>
     </div>
 
     <div class="section level2">

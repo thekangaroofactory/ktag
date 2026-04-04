@@ -5,14 +5,10 @@ Gateway function to setup & init event recording in a single call.
 ## Usage
 
 ``` r
-record(input, session)
+record(session = shiny::getDefaultReactiveDomain())
 ```
 
 ## Arguments
-
-- input:
-
-  the input object of the Shiny server function
 
 - session:
 
@@ -24,9 +20,8 @@ an observer reference class object (see shiny::observeEvent())
 
 ## Details
 
-`input` is required to create the listener that will capture events sent
-by the JavaScript code. `session` is required to register the
-onSessionEnded callback, get the URL query string & use the token value
+`session` is required to seteup the event listener, register the
+onSessionEnded callback, get the URLcquery string & use the token value
 as a session uuid.
 
 ## Examples

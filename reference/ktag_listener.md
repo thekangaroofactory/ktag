@@ -5,14 +5,10 @@ Observe Event on Tag
 ## Usage
 
 ``` r
-ktag_listener(input, session)
+ktag_listener(session = shiny::getDefaultReactiveDomain())
 ```
 
 ## Arguments
-
-- input:
-
-  the input object
 
 - session:
 
