@@ -29,7 +29,7 @@ record <- function(session = shiny::getDefaultReactiveDomain()){
 
   # -- insert JavaScript in UI header
   # JS file under inst/assets/js/ktag.js
-  insert_js()
+  insert_js(session)
 
   # -- create event listener (& return)
   ktag_listener(session)

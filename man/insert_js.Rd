@@ -4,7 +4,7 @@
 \alias{insert_js}
 \title{Insert JavaScript}
 \usage{
-insert_js()
+insert_js(session)
 }
 \description{
 Insert the required JavaScript code from Server side
