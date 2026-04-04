@@ -16,6 +16,11 @@
 #' When an html component has no id, the function will raise a warning in the console
 #' and ignore the call.
 #'
+#' At least what should be provided. If the ktag CSS class was applied on an object, it will
+#' be the name-spaced inputId.
+#' Where is meant to be extracted from what. This is particularly useful when working with
+#' Shiny modules.
+#'
 #' @export
 #'
 #' @importFrom utils head
@@ -36,12 +41,17 @@ ktag <- function(..., path = Sys.getenv("KTAG_PATH")){
 
   # -- args
   arg_list <- list(...)
-  if(identical(arg_list$what, "")){
-    warning("Missing id (what) on a component with class ktag - event is ignored.")
+
+  if(!length(arg_list)){
+    warning("At least what should be passed to ... argument — call is ignored.")
+    return()}
+
+  if(identical(arg_list$what, "") || is.null(arg_list$what)){
+    warning("What is either NULL or empty. Check for missing id on a component with class ktag — event is ignored.")
     return()}
 
   # -- prepare & log
-  x <- data.frame(who = arg_list$who,
+  x <- data.frame(who = if("when" %in% names(arg_list)) arg_list$who else shiny::getDefaultReactiveDomain()$token,
                   when = if("when" %in% names(arg_list)) arg_list$when else round(as.numeric(Sys.time()) * 1000, digits = 0),
                   where = if("where" %in% names(arg_list)) arg_list$where else paste(utils::head(unlist(strsplit(arg_list$what, split = "-")), -1L), collapse = "-"),
                   what = utils::tail(unlist(strsplit(arg_list$what, split = "-")), 1L),
