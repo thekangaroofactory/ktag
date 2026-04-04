@@ -4,10 +4,13 @@
 \alias{insert_js}
 \title{Insert JavaScript}
 \usage{
-insert_js(session)
+insert_js(session = shiny::getDefaultReactiveDomain())
+}
+\arguments{
+\item{session}{the session object of the Shiny server function}
 }
 \description{
-Insert the required JavaScript code from Server side
+Insert the required JavaScript code from Server side#'
 }
 \details{
 This function is a wrapper around shiny::insertUI() to add the JavaScript
