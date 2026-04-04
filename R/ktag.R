@@ -38,14 +38,14 @@ ktag <- function(..., path = Sys.getenv("KTAG_PATH")){
                   what = utils::tail(unlist(strsplit(arg_list$what, split = "-")), 1L),
                   how = if("how" %in% names(arg_list)) arg_list$how else NA)
 
-  col_names <- !file.exists(file.path(path, "ktag.csv"))
+  f_exists <- !file.exists(file.path(path, "ktag.csv"))
 
   utils::write.table(x,
                      file = file.path(path, "ktag.csv"),
-                     append = TRUE,
+                     append = !f_exists,
                      sep = ",",
                      quote = FALSE,
-                     col.names = col_names,
+                     col.names = f_exists,
                      row.names = FALSE,
                      fileEncoding = "UTF-8")
 
