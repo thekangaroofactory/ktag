@@ -23,6 +23,9 @@ The function understands the following parameters in ...
 \item what: the name of the action. Usually the id of the input, including its namespace
 \item how: additional info to log, like the value of an input for example
 }
+
+When an html component has no id, the function will raise a warning in the console
+and ignore the call.
 }
 \examples{
 \dontrun{
