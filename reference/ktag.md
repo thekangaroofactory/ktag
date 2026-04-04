@@ -34,6 +34,9 @@ The function understands the following parameters in ...
 
 - how: additional info to log, like the value of an input for example
 
+When an html component has no id, the function will raise a warning in
+the console and ignore the call.
+
 ## Examples
 
 ``` r
