@@ -5,7 +5,7 @@ Insert the required JavaScript code from Server side
 ## Usage
 
 ``` r
-insert_js()
+insert_js(session)
 ```
 
 ## Details
