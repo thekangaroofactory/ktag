@@ -37,6 +37,11 @@ The function understands the following parameters in ...
 When an html component has no id, the function will raise a warning in
 the console and ignore the call.
 
+At least what should be provided. If the ktag CSS class was applied on
+an object, it will be the name-spaced inputId. Where is meant to be
+extracted from what. This is particularly useful when working with Shiny
+modules.
+
 ## Examples
 
 ``` r
