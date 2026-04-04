@@ -58,4 +58,4 @@ ktag::record()
 
 Note: there is no need to insert the JavaScript code on UI side – It's all wrapped into the `record()` function: insert the JavaScript, log session start, register session end callback, create an event listener.
 
-FYI – the event listener is plugged on an input names `ktag_event` that should not be used anywhere inside the app to ensure uniqueness.
+FYI – the event listener is plugged on an input named `ktag_event` that should not be used anywhere inside the app to ensure uniqueness.

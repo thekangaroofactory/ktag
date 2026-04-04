@@ -11,7 +11,7 @@
 #' register_close(session)
 #' }
 
-register_close <- function(session){
+register_close <- function(session = shiny::getDefaultReactiveDomain()){
 
   # -- log session end
   session$onSessionEnded(function(){

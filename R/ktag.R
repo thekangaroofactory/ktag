@@ -26,7 +26,7 @@
 
 ktag <- function(..., path = Sys.getenv("KTAG_PATH")){
 
-  stopifnot("KTAG_PATH environment variable is not set or path is NULL" = !is.null(path))
+  stopifnot("KTAG_PATH environment variable is not set or path argument is empty" = !identical(path, ""))
 
   if(Sys.getenv("KTAG_STATE") == "OFF")
     return()

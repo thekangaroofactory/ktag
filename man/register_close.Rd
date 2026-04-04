@@ -4,7 +4,7 @@
 \alias{register_close}
 \title{Log Session End}
 \usage{
-register_close(session)
+register_close(session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{session}{the session object from the server}

@@ -3,7 +3,6 @@
 #' Observe Event on Tag
 #'
 #' @param session the session object from the server
-#' @param input the input object
 #'
 #' @returns an observer reference class object (see shiny::observeEvent())
 #' @export
@@ -15,9 +14,9 @@
 #' ktag_listener(session)
 #' }
 
-ktag_listener <- function(input, session){
+ktag_listener <- function(session = shiny::getDefaultReactiveDomain()){
 
-  shiny::observeEvent(input$ktag_event,
-                      ktag(when = input$ktag_event$when, what = input$ktag_event$what, who = session$token))
+  shiny::observeEvent(session$input$ktag_event,
+                      ktag(when = session$input$ktag_event$when, what = session$input$ktag_event$what, who = session$token))
 
 }

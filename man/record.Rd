@@ -4,11 +4,9 @@
 \alias{record}
 \title{Start Recording}
 \usage{
-record(input, session)
+record(session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
-\item{input}{the input object of the Shiny server function}
-
 \item{session}{the session object of the Shiny server function}
 }
 \value{
@@ -18,10 +16,8 @@ an observer reference class object (see shiny::observeEvent())
 Gateway function to setup & init event recording in a single call.
 }
 \details{
-\code{input} is required to create the listener that will capture events sent by
-the JavaScript code.
-\code{session} is required to register the onSessionEnded callback, get the URL
-query string & use the token value as a session uuid.
+\code{session} is required to seteup the event listener, register the onSessionEnded callback,
+get the URLcquery string & use the token value as a session uuid.
 }
 \examples{
 \dontrun{

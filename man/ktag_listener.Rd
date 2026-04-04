@@ -4,11 +4,9 @@
 \alias{ktag_listener}
 \title{Observe Event on Tag}
 \usage{
-ktag_listener(input, session)
+ktag_listener(session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
-\item{input}{the input object}
-
 \item{session}{the session object from the server}
 }
 \value{
