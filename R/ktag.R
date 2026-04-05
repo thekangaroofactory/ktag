@@ -57,9 +57,10 @@ ktag <- function(..., path = Sys.getenv("KTAG_PATH")){
     arg_list$when <- round(as.numeric(Sys.time()) * 1000, digits = 0)
   if(!"where" %in% names(arg_list))
     arg_list$where <- paste(utils::head(unlist(strsplit(arg_list$what, split = "-")), -1L), collapse = "-")
-  arg_list$where <- utils::tail(unlist(strsplit(arg_list$what, split = "-")), 1L)
-  if(!"how" %in% names(arg_list))
+  arg_list$what <- utils::tail(unlist(strsplit(arg_list$what, split = "-")), 1L)
+  if(!"how" %in% names(arg_list) || is.null(arg_list$how))
     arg_list$how <- NA
+  arg_list <- arg_list[c('who', 'when', 'where', 'what', 'how')]
 
   # -- write
   x <- as.data.frame(arg_list)
