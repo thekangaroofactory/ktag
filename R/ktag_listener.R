@@ -17,6 +17,9 @@
 ktag_listener <- function(session = shiny::getDefaultReactiveDomain()){
 
   shiny::observeEvent(session$input$ktag_event,
-                      ktag(when = session$input$ktag_event$when, what = session$input$ktag_event$what, who = session$token))
+                      ktag(who = session$token,
+                           when = session$input$ktag_event$when,
+                           what = session$input$ktag_event$what,
+                           how = session$input$ktag_event$how))
 
 }
