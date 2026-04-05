@@ -1,5 +1,5 @@
 Package: ktag
-Title: R Package for Shiny Analytics
+Title: R Package for Targeted Shiny Analytics
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Philippe",
