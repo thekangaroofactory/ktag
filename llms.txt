@@ -21,69 +21,23 @@ The development version can be installed from GitHub with:
 devtools::install_github("thekangaroofactory/ktag")
 ```
 
-## Motivations
+## Use case
 
-I used to have Google Analytics implemented on my website (it’s a
-R/Shiny app), but the platform feels a bit of an overkill to cover a
-limited scope (too many views, too many reports, too many features).  
-Another concern is about privacy since I can’t control what is collected
-& tracked.
+This package is based on a use case where we don’t want to track
+everything (not every user actions, not every components).  
+See motivations article for more details.
 
-In a recent update, I removed all Google tags from this app and wanted
-to quickly replace it by *something* to monitor basic user actions
-(navigation, specific buttons or links and a few inputs).  
-The easiest path was to replace de `gtag` CSS class set on my components
-by a `ktag` one and basically reuse the very few JavaScript code to send
-an event from the client to the Shiny server and write it into a CSV
-file.
+## What is logged
 
-The R/Shiny community has provided options to cover larger scopes
-(monitor everything driven approach), so I am wrapping this code into a
-prototype package to cover a specific use case that I would describe
-with the following parameters:
+A basic CSV file, with columns:
 
-- track specific user actions
-- reuse the track components based on CSS class approach
-- implement the app monitoring in a single call (on server side)
-- have no data loaded in session (except a single event observer)
-- local save to a .csv file (append events to the log)
-
-## Get Started
-
-### Setup environment
-
-Set the `KTAG_PATH` environment variable to define the path where to
-store the log file (ktag.csv)
-
-Note: it’s possible to disable the file writing by setting
-`KTAG_STATE=OFF` (most probably for development environment).
-
-### Tag components
-
-Add the `ktag` class to inputs (at this point, it works with buttons &
-links).  
-Note that this CSS class is not defined anywhere so it won’t apply any
-style. It will just serve as a JQuery selector.
-
-### Init recording
-
-On the server side, call the
-[`record()`](https://thekangaroofactory.github.io/ktag/reference/record.md)
-function:
-
-``` r
-# -- monitor the app in a single call
-ktag::record()
-```
-
-Note: there is no need to insert the JavaScript code on UI side – It’s
-all wrapped into the
-[`record()`](https://thekangaroofactory.github.io/ktag/reference/record.md)
-function: insert the JavaScript, log session start, register session end
-callback, create an event listener.
-
-FYI – the event listener is plugged on an input named `ktag_event` that
-should not be used anywhere inside the app to ensure uniqueness.
+- who: an id for the session (default uses session\$token)
+- when: the timestamp of the action (either on JavaScript side or on
+  R/Shiny server side)
+- where: the namespace where the component belongs to (module id if
+  using Shiny modules)
+- what: the name of the action (defined by its inputId in most cases)
+- how: additional details about the action
 
 # Package index
 
@@ -104,4 +58,6 @@ should not be used anywhere inside the app to ensure uniqueness.
 
 ### All vignettes
 
+- [ktag](https://thekangaroofactory.github.io/ktag/articles/ktag.md):
 - [motivations](https://thekangaroofactory.github.io/ktag/articles/motivations.md):
+- [supported-components](https://thekangaroofactory.github.io/ktag/articles/supported-components.md):

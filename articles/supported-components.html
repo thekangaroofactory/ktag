@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>motivations • ktag</title>
+<title>supported-components • ktag</title>
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="motivations_files/libs/quarto-html/popper.min.js"></script><script src="motivations_files/libs/quarto-html/tippy.umd.min.js"></script><link href="motivations_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="motivations_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="motivations">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="supported-components_files/libs/quarto-html/popper.min.js"></script><script src="supported-components_files/libs/quarto-html/tippy.umd.min.js"></script><link href="supported-components_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="supported-components_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="supported-components">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -62,7 +62,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>motivations</h1>
+      <h1>supported-components</h1>
 
 
 
@@ -76,20 +76,34 @@
 
 
 
-    <section class="level2"><h2 id="motivations">Motivations<a class="anchor" aria-label="anchor" href="#motivations"></a>
+    <section class="level2"><h2 id="inputs">Inputs<a class="anchor" aria-label="anchor" href="#inputs"></a>
 </h2>
-<p>I used to have Google Analytics implemented on my website (it’s a R/Shiny app), but the platform feels a bit of an overkill to cover a limited scope (too many views, too many reports, too many features).<br>
-Another concern is about privacy since I can’t control what is collected &amp; tracked.</p>
-<p>In a recent update, I removed all Google tags from this app and wanted to quickly replace it by <em>something</em> to monitor basic user actions (navigation, specific buttons or links and a few inputs).<br>
-The easiest path was to replace de <code>gtag</code> CSS class set on my components by a <code>ktag</code> one and basically reuse the very few JavaScript code to send an event from the client to the Shiny server and write it into a CSV file.</p>
-<p>The R/Shiny community has provided options to cover larger scopes (monitor everything driven approach), so I am wrapping this code into a prototype package to cover a specific use case that I would describe with the following parameters:</p>
 <ul>
-<li>track specific user actions</li>
-<li>reuse the track components based on CSS class approach</li>
-<li>implement the app monitoring in a single call (on server side)</li>
-<li>have no data loaded in session (except a single event observer)</li>
-<li>local save to a .csv file (append events to the log)</li>
-</ul></section><script id="quarto-html-after-body" type="application/javascript">
+<li>actionButton</li>
+<li>actionLink</li>
+<li>downloadButton</li>
+<li>downloadLink</li>
+</ul>
+<p>For other inputs (for example selectInput or numericInput), it’s not possible to set a CSS class directly on them from the app code.</p>
+<p>That being said, it may never be necessary to cover them all since this package does not address the track-everything use case. Instead, you may want to fire specific direct calls from the server side using the input values as <em>how</em> values (ex: compute plot with filters).</p>
+</section><section class="level2"><h2 id="navigation">Navigation<a class="anchor" aria-label="anchor" href="#navigation"></a>
+</h2>
+<ul>
+<li>nav_panel<br><code>ktag</code> class is automatically added on <code>&lt;a&gt;</code> elements holding <code>nav-link</code> class.</li>
+</ul></section><section class="level2"><h2 id="other-components">Other components<a class="anchor" aria-label="anchor" href="#other-components"></a>
+</h2>
+<ul>
+<li>accordion<br><code>ktag</code> class is automatically transformed (moved onto accordion buttons)<br><em>how</em> will hold whether accordion panel is expanded or collapsed.<br><code>bslib::accordion(class = ‘ktag’, …)</code>
+</li>
+</ul></section><section class="level2"><h2 id="your-own-stuff">Your own stuff<a class="anchor" aria-label="anchor" href="#your-own-stuff"></a>
+</h2>
+<ul>
+<li>html tags holding <code>ktag</code> CSS class, typically:<br><code>tags$a(id = “my_link”, class = “ktag”, …)</code>
+</li>
+</ul></section><section class="level2"><h2 id="direct-calls">Direct calls<a class="anchor" aria-label="anchor" href="#direct-calls"></a>
+</h2>
+<p>Log specific actions from server side:<br><code>ktag(who = session$token, what = "namespace-action_name")</code></p>
+</section><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -172,7 +186,8 @@ The easiest path was to replace de <code>gtag</code> CSS class set on my compone
       }
     }
   });
-  </script></main>
+  </script></main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 

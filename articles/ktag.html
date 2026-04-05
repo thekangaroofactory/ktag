@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>motivations • ktag</title>
+<title>ktag • ktag</title>
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="motivations_files/libs/quarto-html/popper.min.js"></script><script src="motivations_files/libs/quarto-html/tippy.umd.min.js"></script><link href="motivations_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="motivations_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="motivations">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="ktag_files/libs/quarto-html/popper.min.js"></script><script src="ktag_files/libs/quarto-html/tippy.umd.min.js"></script><link href="ktag_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="ktag_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="ktag">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -31,9 +31,9 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="../articles/ktag.html">Get started</a></li>
+<li class="active nav-item"><a class="nav-link" href="../articles/ktag.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="active nav-item dropdown">
+<li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/motivations.html">motivations</a></li>
@@ -62,7 +62,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>motivations</h1>
+      <h1>ktag</h1>
 
 
 
@@ -76,20 +76,26 @@
 
 
 
-    <section class="level2"><h2 id="motivations">Motivations<a class="anchor" aria-label="anchor" href="#motivations"></a>
+    <section class="level2"><h2 id="get-started">Get Started<a class="anchor" aria-label="anchor" href="#get-started"></a>
 </h2>
-<p>I used to have Google Analytics implemented on my website (it’s a R/Shiny app), but the platform feels a bit of an overkill to cover a limited scope (too many views, too many reports, too many features).<br>
-Another concern is about privacy since I can’t control what is collected &amp; tracked.</p>
-<p>In a recent update, I removed all Google tags from this app and wanted to quickly replace it by <em>something</em> to monitor basic user actions (navigation, specific buttons or links and a few inputs).<br>
-The easiest path was to replace de <code>gtag</code> CSS class set on my components by a <code>ktag</code> one and basically reuse the very few JavaScript code to send an event from the client to the Shiny server and write it into a CSV file.</p>
-<p>The R/Shiny community has provided options to cover larger scopes (monitor everything driven approach), so I am wrapping this code into a prototype package to cover a specific use case that I would describe with the following parameters:</p>
-<ul>
-<li>track specific user actions</li>
-<li>reuse the track components based on CSS class approach</li>
-<li>implement the app monitoring in a single call (on server side)</li>
-<li>have no data loaded in session (except a single event observer)</li>
-<li>local save to a .csv file (append events to the log)</li>
-</ul></section><script id="quarto-html-after-body" type="application/javascript">
+<section class="level3"><h3 id="setup-environment">Setup environment<a class="anchor" aria-label="anchor" href="#setup-environment"></a>
+</h3>
+<p>Set the <code>KTAG_PATH</code> environment variable to define the path where to store the log file (ktag.csv).</p>
+</section><section class="level3"><h3 id="tag-components">Tag components<a class="anchor" aria-label="anchor" href="#tag-components"></a>
+</h3>
+<p>Add the <code>ktag</code> class to specific inputs you want to track (see supported types).<br>
+Note: this CSS class is not defined anywhere so it won’t apply any style. It will just serve as a JQuery <a href="https://api.jquery.com/category/selectors/" class="external-link">selector</a>.</p>
+</section><section class="level3"><h3 id="init-recording">Init recording<a class="anchor" aria-label="anchor" href="#init-recording"></a>
+</h3>
+<p>On the server side, call the <code><a href="../reference/record.html">record()</a></code> function:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># -- monitor the app in a single call ktag::record()</span></span></code></pre></div>
+<p>There is no need to insert the JavaScript code on UI side – It’s all wrapped into the <code><a href="../reference/record.html">record()</a></code> function: insert the JavaScript, log session start, register session end callback, create a (single) event listener.</p>
+<p>FYI – the event listener is plugged on an input named <code>ktag_event</code> that should not be used anywhere inside the app to ensure uniqueness.</p>
+</section></section><section class="level2"><h2 id="disable-recording">Disable recording<a class="anchor" aria-label="anchor" href="#disable-recording"></a>
+</h2>
+<p>It is possible to disable writing the output file by setting <code>KTAG_STATE=OFF</code> (most probably in development environment).</p>
+</section><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -172,7 +178,8 @@ The easiest path was to replace de <code>gtag</code> CSS class set on my compone
       }
     }
   });
-  </script></main>
+  </script></main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
