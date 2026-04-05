@@ -100,3 +100,8 @@ should not be used anywhere inside the app to ensure uniqueness.
 - [`register_close()`](https://thekangaroofactory.github.io/ktag/reference/register_close.md)
   : Log Session End
 
+# Articles
+
+### All vignettes
+
+- [motivations](https://thekangaroofactory.github.io/ktag/articles/motivations.md):

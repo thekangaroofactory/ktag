@@ -1,8 +1,9 @@
 pandoc: 3.1.11
 pkgdown: 2.2.0
 pkgdown_sha: ~
-articles: {}
-last_built: 2026-04-05T14:26Z
+articles:
+  motivations: motivations.html
+last_built: 2026-04-05T16:22Z
 urls:
   reference: https://thekangaroofactory.github.io/ktag/reference
   article: https://thekangaroofactory.github.io/ktag/articles
