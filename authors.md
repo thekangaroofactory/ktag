@@ -7,11 +7,12 @@
 
 ## Citation
 
-Peret P (2026). *ktag: R Package for Shiny Analytics*. R package version
-0.0.0.9000, <https://thekangaroofactory.github.io/ktag/>.
+Peret P (2026). *ktag: R Package for Targeted Shiny Analytics*. R
+package version 0.0.0.9000,
+<https://thekangaroofactory.github.io/ktag/>.
 
     @Manual{,
-      title = {ktag: R Package for Shiny Analytics},
+      title = {ktag: R Package for Targeted Shiny Analytics},
       author = {Philippe Peret},
       year = {2026},
       note = {R package version 0.0.0.9000},
