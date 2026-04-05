@@ -2,7 +2,7 @@
 
 <!-- badges: start / keep here because it's not displayed the same way in GitHub & pkgdown -->
 
-[![r-cmd-check](https://github.com/thekangaroofactory/ktag/actions/workflows/r-cmd-check.yaml/badge.svg)](https://github.com/thekangaroofactory/ktag/actions/workflows/r-cmd-check.yaml)
+[![r-cmd-check](https://github.com/thekangaroofactory/ktag/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/thekangaroofactory/ktag/actions/workflows/r-cmd-check.yml)
 
 <!-- badges: end -->
 
