@@ -1,0 +1,14 @@
+---
+title: "motivations"
+format: html
+editor: visual
+
+vignette: >
+  %\VignetteIndexEntry{Ordering}
+  %\VignetteEngine{quarto::html}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Quarto
+
+Quarto en
