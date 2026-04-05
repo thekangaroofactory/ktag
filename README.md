@@ -1,5 +1,11 @@
 # ktag
 
+<!-- badges: start / keep here because it's not displayed the same way in GitHub & pkgdown -->
+
+[![r-cmd-check](https://github.com/thekangaroofactory/ktag/actions/workflows/r-cmd-check.yaml/badge.svg)](https://github.com/thekangaroofactory/ktag/actions/workflows/r-cmd-check.yaml)
+
+<!-- badges: end -->
+
 Prototype for targeted monitoring of user actions in R Shiny apps.
 
 ## Lifecycle
