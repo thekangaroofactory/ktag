@@ -17,6 +17,9 @@ Imports:
     shiny
 URL: https://thekangaroofactory.github.io/ktag/
 Suggests: 
+    knitr,
+    rmarkdown,
+    quarto,
     testthat (>= 3.0.0)
 VignetteBuilder: 
     quarto
